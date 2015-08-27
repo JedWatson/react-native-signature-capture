@@ -42,19 +42,10 @@
 		self.sign = [[PPSSignatureView alloc]
                      initWithFrame: CGRectMake(0, 0, screen.width, screen.height)
                      context: _context];
-		
-		[self addSubview:sign];
-		titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, sign.bounds.size.height - 80, 24)];
-		[titleLabel setCenter:CGPointMake(40, sign.bounds.size.height/2)];
-		[titleLabel setTransform:CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90))];
-		[titleLabel setText:@"x_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"];
-		[titleLabel setLineBreakMode:NSLineBreakByClipping];
-		[titleLabel setTextAlignment: NSTextAlignmentLeft];
-		[titleLabel setTextColor:[UIColor colorWithRed:200/255.f green:200/255.f blue:200/255.f alpha:1.f]];
-		//[titleLabel setBackgroundColor:[UIColor greenColor]];
-		[sign addSubview:titleLabel];
 
-		
+        [self addSubview:sign];
+        
+
 		//Save button
 		UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		[saveButton setTransform:CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90))];
