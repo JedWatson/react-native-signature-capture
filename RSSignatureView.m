@@ -93,13 +93,22 @@
 			NSLog(@"Error: %@", error.debugDescription);
 		}
 	}
-	
+
+    // Resize the image
+    CGRect rect = CGRectMake(0, 0, 1024, 768);
+    // make a new graphics context (think layer)
+    UIGraphicsBeginImageContextWithOptions(rect.size, YES, 1.0f);
+    // draw our source image to size in the layer
+    [signImage drawInRect:rect];
+    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
 	// Convert UIImage object into NSData (a wrapper for a stream of bytes) formatted according to PNG spec
-	NSData *imageData = UIImagePNGRepresentation(signImage);
+	NSData *imageData = UIImagePNGRepresentation(resizedImage);
 	BOOL isSuccess = [imageData writeToFile:tempPath atomically:YES];
 	if (isSuccess) {
 		NSString *base64Encoded = [imageData base64EncodedStringWithOptions:0];
-		[self.manager saveImage: tempPath withEncoded:base64Encoded];
+		[self.manager saveImage:tempPath withEncoded:base64Encoded];
 	}
 }
 
