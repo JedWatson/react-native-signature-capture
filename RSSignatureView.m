@@ -44,12 +44,11 @@
                      context: _context];
 
         [self addSubview:sign];
-        
+
+        CGSize buttonSize = CGSizeMake(120.0, 80.0);
 
         //Save button
         UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        //[saveButton setTransform:CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90))];
-        //[saveButton setLineBreakMode:NSLineBreakByClipping];
         [saveButton addTarget:self action:@selector(onSaveButtonPressed)
              forControlEvents:UIControlEventTouchUpInside];
         [saveButton setTitle:@"Save" forState:UIControlStateNormal];
@@ -61,8 +60,6 @@
 
         //Clear button
         UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        //[clearButton setTransform:CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90))];
-        //[clearButton setLineBreakMode:NSLineBreakByClipping];
         [clearButton addTarget:self action:@selector(onClearButtonPressed)
               forControlEvents:UIControlEventTouchUpInside];
         [clearButton setTitle:@"Reset" forState:UIControlStateNormal];
