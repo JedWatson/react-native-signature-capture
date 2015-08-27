@@ -20,20 +20,6 @@
                ReferencedContainer = "container:RSSignatureCapture.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0C53A9A81B56113D004F2642"
-               BuildableName = "RSSignatureCaptureTests.xctest"
-               BlueprintName = "RSSignatureCaptureTests"
-               ReferencedContainer = "container:RSSignatureCapture.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -42,26 +28,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0C53A9A81B56113D004F2642"
-               BuildableName = "RSSignatureCaptureTests.xctest"
-               BlueprintName = "RSSignatureCaptureTests"
-               ReferencedContainer = "container:RSSignatureCapture.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0C53A99D1B56113D004F2642"
-            BuildableName = "libRSSignatureCapture.a"
-            BlueprintName = "RSSignatureCapture"
-            ReferencedContainer = "container:RSSignatureCapture.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"

@@ -17,7 +17,7 @@
 @synthesize sign;
 @synthesize manager;
 
-- (instancetype)init
+-(instancetype) init
 {
 	if ((self = [super init])) {
 		_border = [CAShapeLayer layer];
@@ -31,7 +31,7 @@
 	return self;
 }
 
-- (void)layoutSubviews
+-(void) layoutSubviews
 {
 	[super layoutSubviews];
 	if (!_loaded) {
@@ -40,8 +40,8 @@
 		CGSize screen = self.bounds.size;
 		
 		self.sign = [[PPSSignatureView alloc]
-																initWithFrame: CGRectMake(0, 0, screen.width, screen.height)
-																context: _context];
+                     initWithFrame: CGRectMake(0, 0, screen.width, screen.height)
+                     context: _context];
 		
 		[self addSubview:sign];
 		titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, sign.bounds.size.height - 80, 24)];
@@ -89,13 +89,13 @@
 
 -(void) onSaveButtonPressed {
 	UIImage *signImage = [self.sign signatureImage];
-  NSError *error;
+    NSError *error;
 	
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths firstObject];
 	NSString *tempPath = [documentsDirectory stringByAppendingFormat:@"/signature.png"];
 	
-	//remove if file already exists
+	// Remove the file if it already exists
 	if ([[NSFileManager defaultManager] fileExistsAtPath:tempPath]) {
 		[[NSFileManager defaultManager] removeItemAtPath:tempPath error:&error];
 		if (error) {
@@ -107,10 +107,6 @@
 	NSData *imageData = UIImagePNGRepresentation(signImage);
 	BOOL isSuccess = [imageData writeToFile:tempPath atomically:YES];
 	if (isSuccess) {
-		NSFileManager *man = [NSFileManager defaultManager];
-		NSDictionary *attrs = [man attributesOfItemAtPath:tempPath error: NULL];
-		//UInt32 result = [attrs fileSize];
-		
 		NSString *base64Encoded = [imageData base64EncodedStringWithOptions:0];
 		[self.manager saveImage: tempPath withEncoded:base64Encoded];
 	}

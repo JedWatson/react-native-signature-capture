@@ -127,7 +127,7 @@ static PPSSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
         
         self.context = context;
         self.drawableDepthFormat = GLKViewDrawableDepthFormat24;
-				self.enableSetNeedsDisplay = YES;
+        self.enableSetNeedsDisplay = YES;
         
         // Turn on antialiasing
         self.drawableMultisample = GLKViewDrawableMultisample4X;
@@ -174,7 +174,7 @@ static PPSSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 	[self tearDownGL];
 	
 	if ([EAGLContext currentContext] == context) {
-			[EAGLContext setCurrentContext:nil];
+        [EAGLContext setCurrentContext:nil];
 	}
 
 	context = nil;
