@@ -24,10 +24,10 @@
 		_border.strokeColor = [UIColor blackColor].CGColor;
 		_border.fillColor = nil;
 		_border.lineDashPattern = @[@4, @2];
-		
+
 		[self.layer addSublayer:_border];
 	}
-	
+
 	return self;
 }
 
@@ -36,9 +36,9 @@
 	[super layoutSubviews];
 	if (!_loaded) {
 		_context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-		
+
 		CGSize screen = self.bounds.size;
-		
+
 		self.sign = [[PPSSignatureView alloc]
                      initWithFrame: CGRectMake(0, 0, screen.width, screen.height)
                      context: _context];
@@ -48,30 +48,30 @@
 
 		//Save button
 		UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-		[saveButton setTransform:CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90))];
-		[saveButton setLineBreakMode:NSLineBreakByClipping];
+		//[saveButton setTransform:CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90))];
+		//[saveButton setLineBreakMode:NSLineBreakByClipping];
 		[saveButton addTarget:self action:@selector(onSaveButtonPressed)
-		 forControlEvents:UIControlEventTouchUpInside];
-		[saveButton setTitle:@"Save" forState:UIControlStateNormal];
-		
-		CGSize buttonSize = CGSizeMake(55, 80.0); //Width/Height is swapped
-		
-		saveButton.frame = CGRectMake(sign.bounds.size.width - buttonSize.width, sign.bounds.size.height - buttonSize.height, buttonSize.width, buttonSize.height);
-		[saveButton setBackgroundColor:[UIColor colorWithRed:250/255.f green:250/255.f blue:250/255.f alpha:1.f]];
+             forControlEvents:UIControlEventTouchUpInside];
+        [saveButton setTitle:@"Save" forState:UIControlStateNormal];
+        [saveButton.titleLabel setFont:[UIFont systemFontOfSize:22]];
+
+		saveButton.frame = CGRectMake(sign.bounds.size.width - buttonSize.width, 0, buttonSize.width, buttonSize.height);
+		[saveButton setBackgroundColor:[UIColor colorWithRed:255/255.f green:255/255.f blue:255/255.f alpha:1.f]];
 		[sign addSubview:saveButton];
 
 		//Clear button
 		UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-		[clearButton setTransform:CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90))];
-		[clearButton setLineBreakMode:NSLineBreakByClipping];
+		//[clearButton setTransform:CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90))];
+		//[clearButton setLineBreakMode:NSLineBreakByClipping];
 		[clearButton addTarget:self action:@selector(onClearButtonPressed)
-				 forControlEvents:UIControlEventTouchUpInside];
+              forControlEvents:UIControlEventTouchUpInside];
 		[clearButton setTitle:@"Reset" forState:UIControlStateNormal];
-		
-		clearButton.frame = CGRectMake(sign.bounds.size.width - buttonSize.width, 0, buttonSize.width, buttonSize.height);
-		[clearButton setBackgroundColor:[UIColor colorWithRed:250/255.f green:250/255.f blue:250/255.f alpha:1.f]];
+        [clearButton.titleLabel setFont:[UIFont systemFontOfSize:22]];
+
+		clearButton.frame = CGRectMake(0, 0, buttonSize.width, buttonSize.height);
+		[clearButton setBackgroundColor:[UIColor colorWithRed:255/255.f green:255/255.f blue:255/255.f alpha:1.f]];
 		[sign addSubview:clearButton];
-		
+
 	}
 	_loaded = true;
 	_border.path = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
@@ -81,11 +81,11 @@
 -(void) onSaveButtonPressed {
 	UIImage *signImage = [self.sign signatureImage];
     NSError *error;
-	
+
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths firstObject];
 	NSString *tempPath = [documentsDirectory stringByAppendingFormat:@"/signature.png"];
-	
+
 	// Remove the file if it already exists
 	if ([[NSFileManager defaultManager] fileExistsAtPath:tempPath]) {
 		[[NSFileManager defaultManager] removeItemAtPath:tempPath error:&error];
