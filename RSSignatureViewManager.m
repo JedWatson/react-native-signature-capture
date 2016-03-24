@@ -23,6 +23,12 @@ RCT_EXPORT_MODULE()
     return dispatch_get_main_queue();
 }
 
+-(void) emitCancel {
+    [self.bridge.eventDispatcher
+     sendDeviceEventWithName:@"onCancelEvent"
+     body:[NSNull null]];
+}
+
 -(void) saveImage:(NSString *) aTempPath withEncoded: (NSString *) aEncoded {
     [self.bridge.eventDispatcher
      sendDeviceEventWithName:@"onSaveEvent"

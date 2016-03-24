@@ -8,10 +8,8 @@ var {
   View
 } = React;
 
-var Component = requireNativeComponent(
-                                  'RSSignatureView',
-                                  null
-                                );
+var Component = requireNativeComponent('RSSignatureView', null);
+
 var styles = {
   signatureBox: {
     flex: 1
@@ -24,7 +22,7 @@ var styles = {
   }
 };
 
-var subscription;
+var saveEvent, cancelEvent;
 
 var SignatureCapture = React.createClass({
   propTypes: {
@@ -32,14 +30,13 @@ var SignatureCapture = React.createClass({
   },
 
   componentDidMount: function() {
-    subscription = DeviceEventEmitter.addListener(
-        'onSaveEvent',
-        this.props.onSaveEvent
-    );
+    saveEvent = DeviceEventEmitter.addListener('onSaveEvent', this.props.onSaveEvent);
+    cancelEvent = DeviceEventEmitter.addListener('onCancelEvent', this.props.onCancelEvent);
   },
 
   componentWillUnmount: function() {
-    subscription.remove();
+    saveEvent.remove();
+    cancelEvent.remove();
   },
 
   render: function() {

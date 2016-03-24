@@ -4,4 +4,5 @@
 @interface RSSignatureViewManager : RCTViewManager
 @property (nonatomic, strong) RSSignatureView *signView;
 -(void) saveImage:(NSString *) aTempPath withEncoded: (NSString *) aEncoded;
+-(void) emitCancel;
 @end
