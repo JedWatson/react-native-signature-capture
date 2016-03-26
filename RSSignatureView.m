@@ -58,6 +58,17 @@
         [saveButton setBackgroundColor:[UIColor colorWithRed:255/255.f green:255/255.f blue:255/255.f alpha:1.f]];
         [sign addSubview:saveButton];
 
+        //Cancel button
+        UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [cancelButton addTarget:self action:@selector(onCancelButtonPressed)
+        forControlEvents:UIControlEventTouchUpInside];
+        [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        [cancelButton.titleLabel setFont:[UIFont systemFontOfSize:22]];
+
+        cancelButton.frame = CGRectMake(0, 0, buttonSize.width, buttonSize.height);
+        [cancelButton setBackgroundColor:[UIColor colorWithRed:255/255.f green:255/255.f blue:255/255.f alpha:1.f]];
+        [sign addSubview:cancelButton];
+
         //Clear button
         UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [clearButton addTarget:self action:@selector(onClearButtonPressed)
@@ -65,9 +76,10 @@
         [clearButton setTitle:@"Reset" forState:UIControlStateNormal];
         [clearButton.titleLabel setFont:[UIFont systemFontOfSize:22]];
 
-        clearButton.frame = CGRectMake(0, 0, buttonSize.width, buttonSize.height);
+        clearButton.frame = CGRectMake(sign.bounds.size.width / 2, 600, 0, buttonSize.width, buttonSize.height);
         [clearButton setBackgroundColor:[UIColor colorWithRed:255/255.f green:255/255.f blue:255/255.f alpha:1.f]];
         [sign addSubview:clearButton];
+
 
     }
     _loaded = true;
@@ -107,6 +119,10 @@
         NSString *base64Encoded = [imageData base64EncodedStringWithOptions:0];
         [self.manager saveImage:tempPath withEncoded:base64Encoded];
     }
+}
+
+-(void) onCancelButtonPressed {
+    [self.manager emitCancel];
 }
 
 -(void) onClearButtonPressed {

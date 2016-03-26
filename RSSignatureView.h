@@ -10,4 +10,5 @@
 @property (nonatomic, strong) RSSignatureViewManager *manager;
 -(void) onSaveButtonPressed;
 -(void) onClearButtonPressed;
+-(void) onCancelButtonPressed;
 @end
