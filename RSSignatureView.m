@@ -76,7 +76,7 @@
         [clearButton setTitle:@"Reset" forState:UIControlStateNormal];
         [clearButton.titleLabel setFont:[UIFont systemFontOfSize:22]];
 
-        clearButton.frame = CGRectMake(sign.bounds.size.width / 2, 600, 0, buttonSize.width, buttonSize.height);
+        clearButton.frame = CGRectMake(sign.bounds.size.width / 2, 600, buttonSize.width, buttonSize.height);
         [clearButton setBackgroundColor:[UIColor colorWithRed:255/255.f green:255/255.f blue:255/255.f alpha:1.f]];
         [sign addSubview:clearButton];
 
