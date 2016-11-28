@@ -55,7 +55,7 @@
         [saveButton.titleLabel setFont:[UIFont systemFontOfSize:22]];
 
         saveButton.frame = CGRectMake(sign.bounds.size.width - buttonSize.width, 0, buttonSize.width, buttonSize.height);
-        [saveButton setBackgroundColor:[UIColor colorWithRed:255/255.f green:255/255.f blue:255/255.f alpha:1.f]];
+        [saveButton setBackgroundColor:[UIColor colorWithRed:255/255.f green:255/255.f blue:255/255.f alpha:0.f]];
         [sign addSubview:saveButton];
 
         //Cancel button
@@ -76,8 +76,8 @@
         [clearButton setTitle:@"Reset" forState:UIControlStateNormal];
         [clearButton.titleLabel setFont:[UIFont systemFontOfSize:22]];
 
-        clearButton.frame = CGRectMake(sign.bounds.size.width / 2, 600, buttonSize.width, buttonSize.height);
-        [clearButton setBackgroundColor:[UIColor colorWithRed:255/255.f green:255/255.f blue:255/255.f alpha:1.f]];
+        clearButton.frame = CGRectMake(((sign.bounds.size.width / 2) - (buttonSize.width / 2)), 650, buttonSize.width, buttonSize.height);
+        [clearButton setBackgroundColor:[UIColor colorWithRed:255/255.f green:255/255.f blue:255/255.f alpha:0.f]];
         [sign addSubview:clearButton];
 
 
